@@ -1,0 +1,31 @@
+{% extends 'organizador/base_actividad.html' %}
+
+{% block content %}
+
+
+    <h3>Lista de Actividades</h3>
+    <table class="table table-striped table-hover table-bordered" class="tabla">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th></th>
+        </tr>
+
+    {% for a in actividades %}
+        <tr>
+        <td>{{a.pk}}</td>
+        <td>{{a.nombre}}</td>
+        <td>{{a.descripcion}}</td>
+        <td>   <a href={% url 'lista_persona' %} class="btn btn-success">Ver detalle</a>  </td>
+        </tr>
+    {% endfor %}
+    </thead>
+    </table>
+
+
+
+
+
+{% endblock content %}

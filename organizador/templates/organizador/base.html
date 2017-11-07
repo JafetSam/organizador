@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<html>
+    <head>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{% static 'css/organizador.css' %}">
+
+      <title>Organizador</title>
+    </head>
+    <body>
+        <div id="principal">Organizador de Actividades</div>
+
+<!--
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-link">Link</button>
+-->
+
+
+
+        <a href={% url 'lista_persona' %} class="btn btn-primary">Personas</a>
+        <a href={% url 'lista_actividad' %} class="btn btn-success">Actividades</a>
+
+
+        <div>
+          {% block content %}
+          {% endblock %}
+        </div>
+  </body>
+</html>

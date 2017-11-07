@@ -1,0 +1,28 @@
+{% extends 'organizador/base_persona.html' %}
+
+{% block content %}
+
+
+    <h3>Lista de Personas</h3>
+    <table class="table table-striped table-hover table-bordered" class="tabla">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th></th>
+        </tr>
+
+  {% for p in personas %}
+        <tr>
+        <td>{{p.pk}}</td>
+        <td>{{p.nombre}}</td>
+        <td>{{p.apellido}}</td>
+        <td>   <a href={% url 'lista_persona' %} class="btn btn-primary">Ver detalle</a>  </td>
+        </tr>
+{% endfor %}
+    </thead>
+    </table>
+
+
+  {% endblock content %}
