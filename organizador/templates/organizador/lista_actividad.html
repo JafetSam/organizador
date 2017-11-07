@@ -4,12 +4,20 @@
 
 
     <h3>Lista de Actividades</h3>
+
+    <a href={% url 'nueva_actividad' %} class="btn btn-success">Crear actividad</a>
+    <br>
+    <br>
+
     <table class="table table-striped table-hover table-bordered" class="tabla">
       <thead>
         <tr>
           <th>No.</th>
           <th>Nombre</th>
           <th>Descripcion</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th></th>
           <th></th>
         </tr>
 
@@ -18,7 +26,11 @@
         <td>{{a.pk}}</td>
         <td>{{a.nombre}}</td>
         <td>{{a.descripcion}}</td>
-        <td>   <a href={% url 'lista_persona' %} class="btn btn-success">Ver detalle</a>  </td>
+        <td>{{a.fecha}}</td>
+        <td>{{a.hora}}</td>
+        <td><a href="{% url 'editar_actividad' pk=a.pk %}" class="btn btn-primary">Editar</a></td>
+        <td><a href="{% url 'eliminar_actividad' pk=a.pk %}" class="btn btn-primary">Eliminar</a></td>
+
         </tr>
     {% endfor %}
     </thead>

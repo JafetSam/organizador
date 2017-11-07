@@ -1,0 +1,10 @@
+{% extends 'organizador/base_actividad.html' %}
+
+{% block content %}
+
+<form method="POST" class="post-form">{% csrf_token %}
+  {{form.as_p}}
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+
+{% endblock %}
