@@ -20,10 +20,17 @@
 -->
 
 
-
         <a href={% url 'lista_persona' %} class="btn btn-primary">Personas</a>
         <a href={% url 'lista_actividad' %} class="btn btn-success">Actividades</a>
-        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"> Ingresar</span></a>
+
+
+        {% if user.is_authenticated %}
+              <p align="center" class="top-menu"><font size="5" color="white">Usuario: {{ user.username}}</font></p>
+              <p align="right"> <small>(<a href="{% url 'logout' %}"><font color="white">Salir</font></a>)</small></p>
+                    {% else %}
+               <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        {% endif %}
+
 
 
         <div>
