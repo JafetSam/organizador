@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from .forms import PersonaForm,ActividadForm
 from organizador.models import Persona, Actividad,TareasPersona
-
+from django.contrib.auth.decorators import login_required
 
 def base(request):
     return render(request, 'organizador/base.html', {})
@@ -22,7 +22,7 @@ def lista_actividad(request):
     return render(request,'organizador/lista_actividad.html',{'actividades':actividades})
 
 
-
+@login_required
 def nueva_persona(request):
     if request.method == "POST":
         formulario = PersonaForm(request.POST)
@@ -40,7 +40,7 @@ def nueva_persona(request):
         formulario = PersonaForm()
     return render(request, 'organizador/nueva_persona.html', {'formulario': formulario})
 
-
+@login_required
 def nueva_actividad(request):
     if request.method == "POST":
         formulario = ActividadForm(request.POST)
@@ -63,7 +63,7 @@ def nueva_actividad(request):
 
 
 
-
+@login_required
 def editar_persona(request,pk):
     persona=get_object_or_404(Persona,pk=pk)
     if request.method =="POST":
@@ -79,7 +79,7 @@ def editar_persona(request,pk):
 
 
 
-
+@login_required
 def editar_actividad(request,pk):
     actividad=get_object_or_404(Actividad,pk=pk)
     if request.method =="POST":
@@ -96,13 +96,13 @@ def editar_actividad(request,pk):
 
 
 
-
+@login_required
 def eliminar_persona(request,pk):
     persona=get_object_or_404(Persona,pk=pk)
     persona.delete()
     return redirect('lista_persona')
 
-
+@login_required
 def eliminar_actividad(request,pk):
     actividad=get_object_or_404(Actividad,pk=pk)
     actividad.delete()
